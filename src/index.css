@@ -1,0 +1,8 @@
+html {
+	font-size: 1.4rem;
+}
+
+body {
+	background-color: var(--gray-dark);
+	color: white;
+}
