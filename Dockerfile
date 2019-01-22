@@ -1,9 +1,8 @@
-FROM node:9-slim
+FROM node:11-slim as build-stage
 WORKDIR /usr/src/app
 COPY . .
-CMD ["npm", "run", "build"]
+RUN npm run build
 
 FROM nginx:alpine
-ENV PORT 8080
-EXPOSE 8080
-COPY /usr/src/app/build /usr/share/nginx/html
+EXPOSE 80
+COPY --from=build-stage /usr/src/app/build/ /usr/share/nginx/html
